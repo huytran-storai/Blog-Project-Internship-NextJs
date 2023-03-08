@@ -5,12 +5,18 @@ import Author from "./_child/author";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
 import "swiper/css";
+import fetcher from "../lib/fetcher";
+import Spinner from "./_child/spinner";
+import Error from "./_child/error";
 export default function section1(): JSX.Element {
   SwiperCore.use([Autoplay]);
   const bg = {
     background: "url('/images/banner.png') no-repeat",
     backgroundPosition: "right",
   };
+  const { data, isLoading, isError } = fetcher("api/trending");
+  if (isLoading) return <Spinner></Spinner>;
+  if (isError) return <Error></Error>;
   return (
     <section className="py-16" style={bg}>
       <div className="container mx-auto md:px-20">
@@ -22,23 +28,30 @@ export default function section1(): JSX.Element {
             delay: 2000,
           }}
         >
-          <SwiperSlide>{Slide()}</SwiperSlide>
-          <SwiperSlide>{Slide()}</SwiperSlide>
-          <SwiperSlide>{Slide()}</SwiperSlide>
-          <SwiperSlide>{Slide()}</SwiperSlide>
-          ...
+          {data &&
+            data.map((value: any, index: any) => {
+              return (
+                <SwiperSlide key={index}>
+                  <Slide data={value}></Slide>
+                </SwiperSlide>
+              );
+            })}
         </Swiper>
       </div>
     </section>
   );
 }
-function Slide() {
+interface Data {
+  data: any;
+}
+function Slide({ data }: Data) {
+  const { id, title, category, img, published, author, description } = data;
   return (
     <div className="grid md:grid-cols-2">
       <div className="image">
-        <Link href={"/"}>
+        <Link href={`posts/${id}`}>
           <Image
-            src={"/images/pasta-salad.png"}
+            src={img || `posts/${id}`}
             width={600}
             height={600}
             alt="food"
@@ -47,31 +60,30 @@ function Slide() {
       </div>
       <div className="info flex justify-center flex-col">
         <div className="cat">
-          <Link href={"/"} className="text-orange-600 hover:text-orange-800">
-            Miso Peanut Pasta Salad
+          <Link
+            href={`posts/${id}`}
+            className="text-orange-600 hover:text-orange-800"
+          >
+            {category || ""}
           </Link>
-          <Link href={"/"} className="text-gray-800 hover:text-gray-500">
-            - Mar 7, 2023
+          <Link
+            href={`posts/${id}`}
+            className="text-gray-800 hover:text-gray-500"
+          >
+            {published || ""}
           </Link>
         </div>
         <div className="title">
           <Link
-            href={"/"}
+            href={`posts/${id}`}
             className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600"
           >
-            A picnic-worthy pasta salad that subs mayonnaise for peanut sauce
+            {title || ""}
           </Link>
         </div>
-        <p className="text-gray-500 py-3">
-          Combine peanut butter with miso until creamy, then add some spice with
-          vinegar and chili garlic sauce, and finish with honey and sesame oil
-          to take the edge off the sauce. Toss with elbow pasta, scallions,
-          watermelon radish, carrots, broccoli florets, and chopped cilantro.
-          Serve with chopped peanuts.
-        </p>
-        <Author></Author>
+        <p className="text-gray-500 py-3">{description || ""}</p>
+        {author ? <Author {...author}></Author> : ""}
       </div>
-      <div></div>
     </div>
   );
 }
