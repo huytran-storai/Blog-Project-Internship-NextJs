@@ -97,7 +97,7 @@ export default {
       title: "Your most unhappy customers are your greatest source of learning",
       subtitle:
         "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-      category: "Business, Travel",
+      category: "Workspace, Senior",
       img: "/images/articles/posts/img1.jpg",
       description: `
             Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind 
@@ -153,7 +153,7 @@ export default {
       title: "Your most unhappy customers are your greatest source of learning",
       subtitle:
         "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-      category: "Business, Travel",
+      category: "Furniture, House",
       img: "/images/articles/posts/img3.png",
       description: `
             Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind 
@@ -181,7 +181,7 @@ export default {
       title: "Your most unhappy customers are your greatest source of learning",
       subtitle:
         "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-      category: "Business, Travel",
+      category: "Manager, Shechedule",
       img: "/images/articles/posts/img4.png",
       description: `
             Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind 
@@ -209,7 +209,7 @@ export default {
       title: "Your most unhappy customers are your greatest source of learning",
       subtitle:
         "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
-      category: "Business, Travel",
+      category: "Cooking, Fruits",
       img: "/images/articles/posts/img5.png",
       description: `
             Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind 

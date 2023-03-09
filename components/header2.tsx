@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ImFacebook, ImTwitter, ImYoutube } from "react-icons/im";
 import Link from "next/link";
-import SearchForm from "./_child/searchForm";
+import SearchForm2 from "./_child/searchForm2";
 import { useOnClickOutside } from "usehooks-ts";
 
-export default function header() {
+export default function header2() {
   const inputRef = useRef<any>();
+  const [showSearchForm, setShowSearchForm] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
-  const [showSearchForm, setShowSearchForm] = useState(false);
   useOnClickOutside(inputRef, () => setShowSearchForm(false));
 
   return (
@@ -29,7 +29,7 @@ export default function header() {
             />
             {showSearchForm ? (
               <div className="input-form" ref={inputRef}>
-                <SearchForm searchValue={searchValue}/>
+                <SearchForm2 searchValue={searchValue} />
               </div>
             ) : null}
           </div>
@@ -47,7 +47,6 @@ export default function header() {
                 <ImTwitter color="#888888" />
               </Link>
               <Link href={"/"}>
-                {" "}
                 <ImYoutube color="#888888" />
               </Link>
             </div>

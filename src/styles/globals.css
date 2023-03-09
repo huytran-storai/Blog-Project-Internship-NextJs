@@ -11,6 +11,19 @@ a {
   text-decoration: none;
 }
 .input-text {
+  position: relative;
   @apply mt-1 block w-60 px-3 py-2 bg-white border border-slate-300 rounded-full text-sm shadow-sm placeholder-slate-500;
   @apply focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500;
+}
+.input-form {
+  position: absolute;
+  width: 260px;
+  height: 500px;
+  top: 100%;
+  border-radius: 6%;
+  z-index: 1000;
+  background-color: white;
+  border: 3px solid black;
+  overflow: hidden;
+  overflow: scroll;
 }

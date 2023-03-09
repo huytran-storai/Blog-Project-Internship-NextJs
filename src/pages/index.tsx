@@ -1,4 +1,5 @@
 import Format from "../../layout/format";
+import Header from "../../components/header";
 //component
 import Section1 from "../../components/section1";
 import Section2 from "../../components/section2";
@@ -7,6 +8,7 @@ import Section4 from "../../components/section4";
 export default function Home() {
   return (
     <Format>
+      <Header />
       <Section1 />
       <Section2 />
       <Section3 />

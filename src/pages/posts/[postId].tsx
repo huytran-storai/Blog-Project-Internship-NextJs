@@ -9,6 +9,7 @@ import { SWRConfig } from "swr";
 import fetcher from "../../../lib/fetcher";
 import Spinner from "../../../components/_child/spinner";
 import Error from "../../../components/_child/error";
+import Header2 from "../../../components/header2";
 interface Props {
   fallback: {
     "api/posts": any;
@@ -46,6 +47,7 @@ function Article({
 }: ArticleProps): JSX.Element {
   return (
     <Format>
+      <Header2></Header2>
       <section className="container mx-auto md:px-2 py-16 w-1/2">
         <div className="flex justify-center">
           {author ? <Author {...author}></Author> : ""}
